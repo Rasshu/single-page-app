@@ -1,0 +1,32 @@
+<p>Welcome to login page!</p>
+<!-- <div>
+    <input type="text"  [(ngModel)]="Username">
+    <input type="text"  [(ngModel)]="Password">
+    <br>
+    <button (click)="Login()">Login</button>
+    <button (click)="CLear()">Clear</button>
+</div>
+<br>
+{{LoginSuccess}} -->
+
+
+<form #loginForm="ngForm" (ngSubmit)="login1(loginForm.form)">
+   <p>UserName1: <input type="text" name="userNameEditCOntrol"  [(ngModel)]="Username1" #usernameFormControl="ngModel" required maxlength="10"></p> 
+    <div *ngIf="usernameFormControl.errors">
+            <output *ngIf="usernameFormControl.errors['required']">UserName is Required required</output>
+    </div>
+
+    <p>Password1: <input type="text" name="PasswordEditCOntrol"  [(ngModel)]="Password1" #passwordFormControl="ngModel" required maxlength="10"></p> 
+    <div *ngIf="passwordFormControl.errors">
+            <output *ngIf="passwordFormControl.errors['required']">Password is Required required</output>
+    </div>
+
+    <p>Email: <input type="textbox" name="EmailEditCOntrol" [(ngModel)]="Email" #emailFormControl="ngModel" required [email]="true" ></p>
+    <div *ngIf="emailFormControl.errors">
+        <output *ngIf="emailFormControl.errors['required']">Email is Required required</output>
+        <output *ngIf="emailFormControl.errors['email']">Email is not valid</output>
+</div>
+   <input type="submit" value="Login1" formnovalidate/>
+   <input type="button" value="Clear" (click)="ClearAll(loginForm.form)">
+</form>
+
